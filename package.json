@@ -4,7 +4,9 @@
   "description": "A store to order food",
 
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": " parcel build index.html"
   },
   "author": "Abhijit",
   "license": "ISC",
