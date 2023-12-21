@@ -1,10 +1,11 @@
 import ResList from "../Utils/reslist";
 import ResturantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
+import ShimmerUI from "./shimmerUI";
 const Body = () => {
 
-    const [ListofRestaurant,setListofRestaurant]=useState(ResList.restaurants);
-
+    const [ListofRestaurant,setListofRestaurant]=useState([]);
+    
     useEffect(()=>{
     fetchData();
     },[]);
@@ -16,6 +17,10 @@ const Body = () => {
         const json = await data.json();
         console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setListofRestaurant(json?.data?.cards[2]?.card.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+
+    if(ListofRestaurant && ListofRestaurant.length === 0){
+           return <ShimmerUI/>
     }
     return (
         <div className="body">
