@@ -19,10 +19,8 @@ const Body = () => {
         setListofRestaurant(json?.data?.cards[2]?.card.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
-    if(ListofRestaurant && ListofRestaurant.length === 0){
-           return <ShimmerUI/>
-    }
-    return (
+  
+    return ListofRestaurant.length === 0 ? (<ShimmerUI/>):(
         <div className="body">
             <div className="filter">
                 <button className="filter-btn"
