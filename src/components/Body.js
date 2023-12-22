@@ -5,6 +5,7 @@ import ShimmerUI from "./shimmerUI";
 const Body = () => {
 
     const [ListofRestaurant, setListofRestaurant] = useState([]);
+    const [FilterderListofRestaurant,setFilterderListofRestaurant] = useState([]);
     const [SearchText, setSearchText] = useState("");
     console.log("render")
     useEffect(() => {
@@ -16,8 +17,8 @@ const Body = () => {
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
         const json = await data.json();
-        console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setListofRestaurant(json?.data?.cards[1]?.card.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListofRestaurant(json?.data?.cards[2]?.card.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
 
@@ -40,7 +41,7 @@ const Body = () => {
                 res.info.name.toLowerCase().includes(SearchText.toLowerCase())
               );
               console.log(filteredRestaurant)
-              setListofRestaurant(filteredRestaurant);
+              setFilterderListofRestaurant(filteredRestaurant);
             }}
           >
             Search
@@ -58,7 +59,7 @@ const Body = () => {
             </div>
             <div className="res-container">
                 {
-                    ListofRestaurant.map((data) => (
+                  FilterderListofRestaurant.map((data) => (
                         <ResturantCard key={data.info.id} resData={data} />
                     ))
                 }
