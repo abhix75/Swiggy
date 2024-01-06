@@ -3,18 +3,24 @@ import React from "react";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
 
+    console.log(this.props.name,"Child Constructor");
     this.state = {
       count: 1,
       count2: 2,
     };
   }
+
+  componentDidMount(){
+    console.log(this.props.name,"child Component Did Mount")
+  }
   render() {
     const { name, location } = this.props;
+    const {count} = this.state
+    console.log(this.props.name,"Child Render")
     return (
       <div className="user-card">
-        <h2>Count:{this.state.count}</h2>
+        <h2>Count:{count}</h2>
 
         <button
           onClick={() => {
