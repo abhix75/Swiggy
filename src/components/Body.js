@@ -21,7 +21,7 @@ const Body = () => {
     );
     const json = await data.json();
     console.log(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data
     );
     setListofRestaurant(
       json?.data?.cards[2]?.card.card?.gridElements?.infoWithStyle?.restaurants
@@ -39,7 +39,7 @@ const Body = () => {
   return FilterderListofRestaurant.length === 0 ? (
     <ShimmerUI />
   ) : (
-    <div className="body bg-green-200">
+    <div className="body bg-gray-400">
       <div className="filter flex">
         <div className="search m-4 p-4">
           <input
@@ -50,7 +50,7 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="px-4 py-2 bg-green-100 m-4 rounded-r-lg"
+          <button className="px-4 py-2 shadow-blue-400 bg-green-100 m-4 rounded-r-lg"
             onClick={() => {
               console.log(SearchText);
               const filteredRestaurant = ListofRestaurant.filter((res) =>
@@ -65,7 +65,7 @@ const Body = () => {
         </div>
         <div className="search m-4 p-4 flex items-center">
         <button
-          className="px-4 py-2 bg-gray-100 rounded-lg"
+          className="px-4 py-2  shadow-blue-400 bg-gray-100 rounded-lg"
           onClick={() => {
             const filteredList = ListofRestaurant.filter(
               (res) => res.info.avgRating > 4.5
@@ -80,12 +80,12 @@ const Body = () => {
         
       </div>
       <div className="flex flex-wrap">
-        {FilterderListofRestaurant.map((data) => (
-          <Link to={"/restaurants/" + data.info.id}>
-            {" "}
-            <ResturantCard key={data.info.id} resData={data} />
-          </Link>
-        ))}
+      {FilterderListofRestaurant.map((data) => (
+  <Link to={"/restaurants/" + data.info.id} key={data.info.id}>
+    <ResturantCard resData={data} />
+  </Link>
+))}
+
       </div>
     </div>
   );
