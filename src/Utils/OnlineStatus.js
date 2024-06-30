@@ -16,7 +16,7 @@ const useInternetStatus = () => {
  
    },[]);
 
-   //boolean value
+   //boolean valuelue
    return onlineStatus;
 }
 
