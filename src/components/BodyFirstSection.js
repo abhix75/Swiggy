@@ -17,7 +17,7 @@ const BodyFirstSection = () => {
       const data = await fetch(`https://backendfood-app.onrender.com/api/restaurants/bodyfirstpart?lat=26.7586175&lng=80.9141368`);
       const json = await data.json();
       let newarray = json?.data?.cards[0]?.card?.card?.imageGridCards?.info;
-      
+      console.log(newarray)
       setmyMindFood(newarray);
       setIsLoading(true);
    }
